@@ -1,0 +1,13 @@
+body {
+    background-color: #101922;
+    color: #f3f4ef;
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 32px;
+}
+.role {
+    color: #b5d7c6;
+    font-size: 22px;
+}
