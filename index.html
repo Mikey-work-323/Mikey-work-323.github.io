@@ -3,20 +3,28 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--讓手機以裝置的顯示寬度作為排版依據-->
     <title>MIKEY 的個人網站</title>
     <link rel="stylesheet" href="style.css"> <!--rel="stylesheet"說明連結的資源是樣式表-->
 </head>
 
 <body>
-    <h1>你好，我是 MIKEY。</h1>
-    <p class="role">從健身教練，走向資訊安全。</p>  <!--class類別-->
+    <main class="home">   <!--main是主要內容,div是一般容器-->
+        <div class="portrait">
+            <img src="assets/mikey-ringside.jpg" alt="MIKEY WOTD">
+        </div>
+        <div class="content">
+            <h1>你好，我是 MIKEY。</h1>
+            <p class="role">從健身教練，走向資訊安全。</p>  <!--class類別-->
 
-    <img src="assets/mikey-ringside.jpg" alt="MIKEY WOTD" width="400">
-
-    <section>  <!--區塊-->
-        <h2>關於我</h2>
-        <p>我曾擔任五年健身教練,其中三年擔任過訓練主任</p>
-        <p>目前正在學習資訊安全,希望累績實作能力</p>
-    </section>
+            <section>  <!--區塊-->
+                <h2>關於我</h2>
+                <p>我曾擔任五年健身教練,其中三年擔任過訓練主任</p>
+                <p>目前正在學習資訊安全,希望累績實作能力</p>
+            </section>
+        </div>
+    </main>
 </body>
+
 </html>

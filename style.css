@@ -7,7 +7,31 @@ body {
     margin: 0;
     padding: 32px;
 }
-.role {
+.role {    /*CSS在標記類別時前面需要加"."*/
     color: #b5d7c6;
     font-size: 22px;
 }
+.home {
+    display: grid; /*使用grid排版*/
+    grid-template-columns: 1fr 1fr;  /*建立兩攔,平均分配*/
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.portrait img {  /*設定portrait這個類別的圖片樣式*/
+    display: block;
+    width: 100%;
+    height: auto;
+}
+@media (max-width: 780px) {
+    body {
+        padding: 20px;
+    }
+
+    .home {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+/*Media Query（媒體查詢）符合指定條件時,才套用裡面的樣式*/
+/*max-width: 780px 當瀏覽器顯示區寬度小於或等於780像素*/
