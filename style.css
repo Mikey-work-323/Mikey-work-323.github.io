@@ -25,6 +25,8 @@ body {
     margin: 0 auto;
 }
 .portrait {
+    position: relative;
+    isolation: isolate;
     aspect-ratio: 3 / 4;
     overflow: hidden;
 }
@@ -34,6 +36,28 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: 50% 35%;
+}
+.portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to right,
+            #101922 0%,
+            transparent 5%,
+            transparent 95%,
+            #101922 100%
+        ),
+        linear-gradient(
+            to bottom,
+            #101922 0%,
+            transparent 5%,
+            transparent 95%,
+            #101922 100%
+        );
 }
 .menu {
     display: grid;
