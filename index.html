@@ -11,12 +11,18 @@
 </head>
 
 <body>
+    <header class="site-header">
+        <span class="site-brand">MIKEY.</span>
+        <p>個人故事 · 學習紀錄</p>
+    </header>
+
     <main class="home">   <!--main是主要內容,div是一般容器-->
         <div class="portrait">
             <img src="assets/mikey-ringside.jpg" alt="MIKEY WOTD">
         </div>
         <div class="content">
-            <h1>你好，我是 MIKEY。</h1>
+            <p class="greeting">你好，我是</p>
+            <h1 class="name">MIKEY.</h1>
             <p class="role">從健身教練，走向資訊安全。</p>  <!--class類別-->
             
             <nav class="menu" aria-label="內容目錄">       <!--nav導覽區,button按鈕,span分組 -->
@@ -25,17 +31,17 @@
                     <span>關於我</span>
                 </button>
 
-                <button type="button" class="menu-item">
+                <button type="button" class="menu-item" id="work-button">
                     <span class="menu-number">02</span>
                     <span>作品集</span>
                 </button>
 
-                <button type="button" class="menu-item">
+                <button type="button" class="menu-item" id="fight-button">
                     <span class="menu-number">03</span>
                     <span>格鬥與生活</span>
                 </button>
 
-                <button type="button" class="menu-item">
+                <button type="button" class="menu-item" id="ironman-button">
                     <span class="menu-number">04</span>
                     <span>IT鐵人賽</span>
                 </button>
@@ -43,12 +49,158 @@
 
         </div>
     </main>
-    <dialog id="about-panel">  <!--dialog是HTML的視窗元素-->
-        <button type="button" id="close-about">關閉</button>
+    <!--頁尾-->
+    <footer class="site-footer">
+        <span class="footer-label">MIKEY .Mail</span>
+        <a href="mailto:mikey.work9527@outlook.com">
+            mikey.work9527@outlook.com
+        </a>
+    </footer>
+    <!--面板內容區-->
+    <dialog id="about-panel" class="panel" aria-labelledby="about-title">  <!--dialog是HTML的視窗元素-->
+        <header class="panel-header">
+            <h2 id="about-title">關於我</h2>
+            <button type="button" class="panel-close" id="close-about">
+                關閉
+            </button>
+        </header>
 
-        <h2>關於我</h2>
-        <p>我曾擔任五年健身教練，其中三年擔任過訓練主任。</p>
-        <p>目前正在學習資訊安全，希望累積實作能力。</p>
+        <div class="panel-content">
+            <p>我曾擔任五年健身教練，其中三年擔任訓練主任。</p>
+            <p>目前正在學習資訊安全，希望累積實作能力。</p>
+        </div>
+    </dialog>
+    <dialog id="work-panel" class="panel" aria-labelledby="work-title">
+        <header class="panel-header">
+            <h2 id="work-title">作品集</h2>
+            <button type="button" class="panel-close" id="close-work">關閉</button>
+        </header>
+        <div class="panel-content">        
+            <article>
+                <h3>個人自我介紹網站</h3>
+                <p>從空白檔案開始，練習網頁結構、樣式與互動功能。</p>
+                <p>使用 Git 記錄版本，並透過 GitHub Pages 發布。</p>
+
+                <a href="https://github.com/Mikey-work-323/Mikey-work-323.github.io">
+                    查看GitHub原始碼
+                </a>
+            </article>
+        </div>    
+    </dialog>
+    <dialog id="fight-panel" class="panel" aria-labelledby="fight-title">
+        <header class="panel-header">
+            <h2 id="fight-title">格鬥與生活</h2>
+            <button type="button" class="panel-close" id="close-fight">關閉</button>
+        </header>
+        <div class="panel-content">
+            <p>每一場比賽，都是一段學習的經歷。</p>
+            <div class="fight-layout">
+                <figure class="fight-preview">
+                    <p id="fight-photo-status" role="status" hidden>
+                        照片載入中…
+                    </p>
+                    <img id="fight-photo"
+                        src="assets/mikey-ringside.jpg"
+                        alt="MIKEY 的格鬥比賽照片">
+
+                    <figcaption id="fight-caption">
+                        格鬥照片｜預設展示
+                    </figcaption>
+                </figure>
+                <section>
+                    <h3>個人比賽紀錄</h3>
+
+                    <ol class="fight-timeline">
+                        <li>
+                            <button type="button"
+                                    class="fight-trigger"
+                                    aria-pressed="false"
+                                    id="sanda-button">
+                                <time datetime="2021-11">2021 年 11 月</time>
+                                <span class="fight-name">散打比賽</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button type="button"
+                                    class="fight-trigger"
+                                    aria-pressed="false"
+                                    id="hualien-button">
+                                <time datetime="2022-06">2022 年 6 月</time>
+                                <span class="fight-name">洄瀾勇士</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button type="button"
+                                    class="fight-trigger"
+                                    aria-pressed="false"
+                                    id="t1-2022-button">
+                                <time datetime="2022-09">2022 年 9 月</time>
+                                <span class="fight-name">T1 積分賽</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button type="button"
+                                    class="fight-trigger"
+                                    aria-pressed="false"
+                                    id="wotd-button">
+                                <time datetime="2023-04">2023 年 4 月</time>
+                                <span class="fight-name">WOTD-ETD09</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button type="button"
+                                    class="fight-trigger"
+                                    aria-pressed="false"
+                                    id="t1-feb-button">
+                                <time datetime="2024-02">2024 年 2 月</time>
+                                <span class="fight-name">T1 積分賽</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button type="button"
+                                    class="fight-trigger"
+                                    aria-pressed="false"
+                                    id="t1-may-button">
+                                <time datetime="2024-05">2024 年 5 月</time>
+                                <span class="fight-name">T1 積分賽</span>
+                                <span>結果：敗</span>
+                            </button>
+                        </li>
+                    </ol>
+                </section>
+            </div>
+            <section class="student-results">
+                <h3>帶領學生參賽</h3>
+                <time datetime="2023-12">2023 年 12 月</time>
+                <h4>Punch up04－台南站</h4>
+                <p>帶領學生參賽並獲勝。</p>
+            </section>
+        </div>    
+    </dialog>
+    <dialog id="ironman-panel" class="panel" aria-labelledby="ironman-title">
+        <header class="panel-header">
+            <h2 id="ironman-title">IT 鐵人賽</h2>
+            <button type="button" class="panel-close" id="close-ironman">關閉</button>
+        </header>
+        <div class="panel-content">
+            <article>
+                <h3>iPAS 初級資安工程師備考筆記</h3>
+                <p>整理資安基礎知識，透過寫作記錄自己的理解與學習過程。</p>
+                <p>由 AI 協助教學與安排學習內容，再由我整理成筆記。</p>
+
+                <a class="article-link"
+                href="https://ithelp.ithome.com.tw/users/20184081/ironman/9564"
+                target="_blank"
+                rel="noopener noreferrer">
+                    前往閱讀鐵人賽系列 
+                </a>
+            </article>
+        </div>
     </dialog>
 </body>
 

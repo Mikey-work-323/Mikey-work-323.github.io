@@ -1,3 +1,8 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 body {
     background-color: #101922;
     color: #f3f4ef;
@@ -12,16 +17,23 @@ body {
     font-size: 22px;
 }
 .home {
-    display: grid; /*使用grid排版*/
-    grid-template-columns: 1fr 1fr;  /*建立兩攔,平均分配*/
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
 }
+.portrait {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
 .portrait img {  /*設定portrait這個類別的圖片樣式*/
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
 }
 .menu {
     display: grid;
@@ -54,7 +66,7 @@ body {
     outline: 2px solid #b5d7c6;
     outline-offset: 4px;
 }
-#about-panel {  /*選取ID*/
+.panel {
     box-sizing: border-box;
     position: fixed;
     inset: 0 0 0 auto;
@@ -64,7 +76,7 @@ body {
     max-width: 100%;
     height: 100%;
     max-height: 100%;
-    padding: 32px;
+    padding: 0;
     overflow-y: auto;
 
     background-color: #111a22;
@@ -72,10 +84,260 @@ body {
     border: none;
     border-left: 1px solid #ffffff30;
 }
-#about-panel::backdrop {
+
+.panel::backdrop {
     background-color: rgba(0, 0, 0, 0.6);
 }
+
+.fight-timeline {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0 0 0 24px;
+    border-left: 1px solid #ffffff40;
+}
+.fight-timeline li {    /*設定每場比賽的空間*/
+    position: relative;
+    padding-bottom: 28px;
+}
+.fight-timeline li::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -29px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #b5d7c6;
+}
+.fight-timeline time {
+    color: #b5d7c6;
+    font-size: 14px;
+}
+
+.fight-timeline p {
+    margin: 0;
+}
+
+.student-results {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #ffffff30;
+}
+.fight-preview {
+    margin: 24px 0;
+    border: 1px solid #ffffff30;
+}
+
+.fight-preview img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.fight-preview figcaption {
+    padding: 12px 16px;
+    color: #b5d7c6;
+    font-size: 14px;
+}
+.fight-trigger {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: inherit;
+    border: 1px solid #ffffff30;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.fight-name {
+    display: block;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+/* 滑鼠停留：只稍微提亮背景 */
+.fight-trigger:hover {
+    background-color: #ffffff08;
+}
+
+/* 目前選取：保留淺綠背景與邊框 */
+.fight-trigger[aria-pressed="true"] {
+    background-color: #b5d7c61a;
+    border-color: #b5d7c6;
+}
+
+/* 鍵盤焦點：另外顯示外框 */
+.fight-trigger:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 2px;
+}
+
+.fight-preview img[hidden] {
+    display: none;
+}
+.article-link {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border: 1px solid #b5d7c6;
+    color: #b5d7c6;
+    text-decoration: none;
+}
+
+.article-link:hover {
+    background-color: #ffffff10;
+}
+
+.article-link:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 4px;
+}
+.panel-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background-color: #111a22;
+    border-bottom: 1px solid #ffffff30;
+}
+
+.panel-header h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.panel-close {
+    padding: 8px 12px;
+    background: transparent;
+    color: inherit;
+    border: 1px solid #ffffff40;
+    font: inherit;
+    cursor: pointer;
+}
+
+.panel-close:hover {
+    background-color: #ffffff10;
+}
+
+.panel-close:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 4px;
+}
+
+.panel-content {
+    padding: 24px;
+}
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ffffff30;
+}
+
+.site-brand {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #b5d7c6;
+}
+
+.site-header p {
+    margin: 0;
+    font-size: 12px;
+    color: #b5bdc4;
+}
+#fight-panel {
+    width: 900px;
+}
+
+.fight-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.fight-layout .fight-preview {
+    position: sticky;
+    top: 88px;
+    margin: 0;
+    background-color: #111a22;
+}
+.greeting {
+    margin: 0;
+    color: #b5bdc4;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.name {
+    margin: 16px 0 24px;
+    font-family: Arial, sans-serif;
+    font-size: clamp(64px, 7vw, 110px);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -4px;
+}
+.site-footer {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid #ffffff30;
+}
+
+.footer-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b5bdc4;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.site-footer a {
+    color: #b5d7c6;
+    font-size: 16px;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.site-footer a:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 4px;
+}
+#fight-photo-status {
+    margin: 0;
+    padding: 32px 16px;
+    color: #b5bdc4;
+    text-align: center;
+}
 @media (max-width: 780px) {
+    .portrait {
+        aspect-ratio: 16 / 10;
+    }    
+    .fight-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fight-layout .fight-preview {
+        position: static;
+    }
     body {
         padding: 20px;
     }
@@ -87,3 +349,67 @@ body {
 }
 /*Media Query（媒體查詢）符合指定條件時,才套用裡面的樣式*/
 /*max-width: 780px 當瀏覽器顯示區寬度小於或等於780像素*/
+@media (min-width: 781px) and (min-height: 520px) {
+    body {
+        height: 100dvh;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        gap: 20px;
+        padding: 20px 32px;
+    }
+
+    .site-header,
+    .home,
+    .site-footer {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .site-header {
+        padding-bottom: 12px;
+    }
+
+    .home {
+        min-height: 0;
+        align-items: stretch;
+    }
+
+    .portrait {
+        min-height: 0;
+        aspect-ratio: auto;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+    }
+
+    .name {
+        font-size: clamp(48px, 9vh, 96px);
+        margin: 8px 0 16px;
+    }
+
+    .role {
+        font-size: clamp(16px, 2.6vh, 22px);
+        margin: 0 0 12px;
+    }
+
+    .menu {
+        margin-top: 12px;
+        gap: 0;
+    }
+
+    .menu-item {
+        padding: clamp(8px, 1.7vh, 16px) 0;
+    }
+
+    .site-footer {
+        padding-top: 12px;
+    }
+
+    .footer-label {
+        margin-bottom: 4px;
+    }
+}
