@@ -51,6 +51,7 @@ closeFightButton.addEventListener("click", closeFight);
 const sandaButton = document.getElementById("sanda-button");
 const fightPhoto = document.getElementById("fight-photo");
 const fightCaption = document.getElementById("fight-caption");
+const fightVideo = document.getElementById("fight-video");
 const fightPhotoStatus = document.getElementById("fight-photo-status");
 
 function showFightPhoto(photoPath, photoDescription, caption, selectedButton) {
@@ -70,13 +71,22 @@ function showFightPhoto(photoPath, photoDescription, caption, selectedButton) {
             String(button === selectedButton)
         );
     }
+        const videoUrl = (selectedButton.dataset.video || "").trim();
+
+    if (videoUrl) {
+        fightVideo.href = videoUrl;
+        fightVideo.hidden = false;
+    } else {
+        fightVideo.hidden = true;
+        fightVideo.removeAttribute("href");
+    }
 }
 
 function selectSanda() {
     showFightPhoto(
         "assets/sanda-2021.jpg",
         "MIKEY 於 2021 年 11 月參加散打比賽",
-        "2021 年 11 月｜散打比賽",
+        "2021 年 11 月｜散打比賽｜第五名",
         sandaButton
     );
 }
@@ -91,7 +101,7 @@ function selectHualien() {
     showFightPhoto(
         "assets/hualien-2022.jpg",
         "MIKEY 於 2022 年 6 月參加洄瀾勇士比賽",
-        "2022 年 6 月｜洄瀾勇士",
+        "2022 年 6 月｜洄瀾勇士｜優勝",
         hualienButton
     );
 }
@@ -106,7 +116,7 @@ function selectT1_2022() {
     showFightPhoto(
         "assets/t1-2022.jpg",
         "MIKEY 於 2022 年 9 月參加 T1 積分賽",
-        "2022 年 9 月｜T1 積分賽",
+        "2022 年 9 月｜T1 積分賽｜優勝",
         t1Button2022
     );
 }
@@ -123,7 +133,7 @@ function selectWotd() {
     showFightPhoto(
         "assets/wotd-2023.jpg",
         "MIKEY 於 2023 年 4 月參加 WOTD-ETD09",
-        "2023 年 4 月｜WOTD-ETD09",
+        "2023 年 4 月｜WOTD-ETD09｜敗",
         wotdButton
     );
 }
@@ -132,7 +142,7 @@ function selectT1Feb() {
     showFightPhoto(
         "assets/t1-2024-02.jpg",
         "MIKEY 於 2024 年 2 月參加 T1 積分賽",
-        "2024 年 2 月｜T1 積分賽",
+        "2024 年 2 月｜T1 積分賽｜優勝",
         t1FebButton
     );
 }
@@ -186,3 +196,159 @@ function handlePhotoError() {
 
 fightPhoto.addEventListener("load", handlePhotoLoad);
 fightPhoto.addEventListener("error", handlePhotoError);
+
+function initStudentResults() {
+    const studentResults = document.querySelector(".student-results");
+
+    if (!studentResults) return;
+
+    const studentButtons =
+        studentResults.querySelectorAll(".student-trigger");
+
+    const studentPhoto =
+        document.getElementById("student-photo");
+
+    const studentCaption =
+        document.getElementById("student-caption");
+
+    const studentVideo =
+        document.getElementById("student-video");
+
+    const studentStatus =
+        document.getElementById("student-photo-status");
+
+    if (
+        !studentButtons.length ||
+        !studentPhoto ||
+        !studentCaption ||
+        !studentVideo ||
+        !studentStatus
+    ) {
+        return;
+    }
+
+    // 每次切換加一，避免較慢載入的舊照片覆蓋新場次
+    let photoRequest = 0;
+
+    function showStudentResult(selectedButton) {
+        const currentRequest = ++photoRequest;
+
+        const photoPath =
+            (selectedButton.dataset.photo || "").trim();
+
+        const photoDescription =
+            selectedButton.dataset.alt || "學生參賽照片";
+
+        const caption =
+            selectedButton.dataset.caption || "";
+
+        const videoUrl =
+            (selectedButton.dataset.video || "").trim();
+
+        // 只有目前這場維持選取
+        studentButtons.forEach((button) => {
+            button.setAttribute(
+                "aria-pressed",
+                String(button === selectedButton)
+            );
+        });
+
+        studentCaption.textContent = caption;
+
+        // 切換影片；沒有網址就清除上一場連結
+        if (videoUrl) {
+            studentVideo.href = videoUrl;
+            studentVideo.hidden = false;
+        } else {
+            studentVideo.hidden = true;
+            studentVideo.removeAttribute("href");
+        }
+
+        studentPhoto.hidden = true;
+        studentStatus.hidden = false;
+
+        if (!photoPath) {
+            studentStatus.textContent = "這場比賽的照片待補";
+            return;
+        }
+
+        studentStatus.textContent = "照片載入中…";
+
+        const nextPhoto = new Image();
+
+        nextPhoto.onload = () => {
+            if (currentRequest !== photoRequest) return;
+
+            studentPhoto.src = photoPath;
+            studentPhoto.alt = photoDescription;
+            studentPhoto.hidden = false;
+            studentStatus.hidden = true;
+        };
+
+        nextPhoto.onerror = () => {
+            if (currentRequest !== photoRequest) return;
+
+            studentStatus.textContent =
+                "照片載入失敗，請確認圖片路徑";
+        };
+
+        nextPhoto.src = photoPath;
+    }
+
+    studentButtons.forEach((button) => {
+        button.addEventListener("mouseenter", () => {
+            showStudentResult(button);
+        });
+
+        button.addEventListener("focus", () => {
+            showStudentResult(button);
+        });
+
+        button.addEventListener("click", () => {
+            showStudentResult(button);
+        });
+    });
+
+    // 預設展示第一場
+    showStudentResult(studentButtons[0]);
+}
+
+// 確保網頁元素建立完成後才執行
+if (document.readyState === "loading") {
+    document.addEventListener(
+        "DOMContentLoaded",
+        initStudentResults,
+        { once: true }
+    );
+} else {
+    initStudentResults();
+}
+document.querySelectorAll("dialog.panel").forEach((panel) => {
+    let startedOutside = false;
+
+    // 判斷點擊位置是否在面板範圍外
+    function isOutsidePanel(event) {
+        const rect = panel.getBoundingClientRect();
+
+        return (
+            event.clientX < rect.left ||
+            event.clientX > rect.right ||
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom
+        );
+    }
+
+    // 記錄滑鼠或手指按下的位置
+    panel.addEventListener("pointerdown", (event) => {
+        startedOutside = isOutsidePanel(event);
+    });
+
+    // 按下與放開都在面板外，才關閉
+    panel.addEventListener("click", (event) => {
+        if (startedOutside && isOutsidePanel(event)) {
+            panel.close();
+        }
+
+        startedOutside = false;
+    });
+});

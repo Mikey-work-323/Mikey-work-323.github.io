@@ -112,6 +112,21 @@ body {
 .panel::backdrop {
     background-color: rgba(0, 0, 0, 0.6);
 }
+.panel[open] {
+    animation: panel-enter 0.25s ease-out;
+}
+
+@keyframes panel-enter {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 .fight-timeline {
     list-style: none;
@@ -371,6 +386,199 @@ body {
         gap: 24px;
     }
 }
+.about-intro {
+    margin: 0 0 32px;
+    padding-left: 16px;
+    border-left: 2px solid #b5d7c6;
+    color: #b5d7c6;
+    font-size: 22px;
+}
+
+.about-section + .about-section {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #ffffff30;
+}
+
+.about-section h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.about-section p {
+    margin: 0 0 12px;
+    color: #b5bdc4;
+}
+
+.about-section ul {
+    margin: 0;
+    padding-left: 24px;
+    color: #b5bdc4;
+}
+
+.about-section li + li {
+    margin-top: 8px;
+}
+.about-section .certificate-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.certificate-list .certificate-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 16px;
+    margin: 0;
+    padding: 16px 0;
+    border-bottom: 1px solid #ffffff20;
+}
+
+.certificate-item h4 {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.certificate-item time {
+    grid-column: 2;
+    grid-row: 1;
+    color: #b5d7c6;
+    font-size: 13px;
+    text-align: right;
+}
+
+.about-section .certificate-issuer {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #b5bdc4;
+    font-size: 14px;
+}
+
+.certificate-item:last-child {
+    border-bottom: none;
+}
+.fight-video {
+    display: inline-block;
+    margin: 0 16px 16px;
+    padding: 8px 12px;
+    border: 1px solid #b5d7c6;
+    color: #b5d7c6;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.fight-video:hover {
+    background-color: #ffffff10;
+}
+
+.fight-video:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 4px;
+}
+
+.fight-video[hidden] {
+    display: none;
+}
+.portfolio-list {
+    display: grid;
+}
+
+.portfolio-item {
+    min-width: 0;
+    padding: 8px 0 32px;
+}
+
+/* 從第二個作品開始，加上分隔線 */
+.portfolio-item + .portfolio-item {
+    padding-top: 32px;
+    border-top: 1px solid #ffffff30;
+}
+
+/* 名稱在左、製作日期在右 */
+.portfolio-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 12px 20px;
+    margin-bottom: 20px;
+}
+
+.portfolio-heading h3 {
+    margin: 0;
+    color: #f1f3f4;
+    font-size: 24px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* 灰底日期標籤 */
+.portfolio-date {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #ffffff14;
+    color: #b5bdc4;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+
+.portfolio-item p,
+.portfolio-item li {
+    color: #b5bdc4;
+    line-height: 1.8;
+}
+
+.portfolio-summary {
+    margin: 0 0 24px;
+}
+
+.portfolio-item h4 {
+    margin: 0 0 12px;
+    color: #f1f3f4;
+    font-size: 17px;
+}
+
+.portfolio-item ul {
+    margin: 0;
+    padding-left: 24px;
+}
+
+.portfolio-item li + li {
+    margin-top: 8px;
+}
+
+.portfolio-item .portfolio-note {
+    margin: 20px 0 0;
+    font-size: 14px;
+}
+
+/* 每個作品自己的連結區 */
+.portfolio-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 24px;
+}
+
+.portfolio-links a {
+    color: #b5d7c6;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    overflow-wrap: anywhere;
+}
+
+.portfolio-links a:hover {
+    color: #ffffff;
+}
+
+.portfolio-links a:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 5px;
+}
 /*Media Query（媒體查詢）符合指定條件時,才套用裡面的樣式*/
 /*max-width: 780px 當瀏覽器顯示區寬度小於或等於780像素*/
 @media (min-width: 781px) and (min-height: 520px) {
@@ -435,5 +643,256 @@ body {
 
     .footer-label {
         margin-bottom: 4px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .panel[open] {
+        animation: none;
+    }
+}
+/* 共用左右排列 */
+#fight-panel .fight-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 24px;
+
+    height: auto;
+    min-height: 0;
+    align-items: start;
+}
+
+/* 取消右側獨立捲動 */
+#fight-panel .fight-records {
+    min-width: 0;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+}
+
+/* 個人與學生照片區 */
+#fight-panel .fight-preview,
+#fight-panel .student-preview {
+    box-sizing: border-box;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border: 1px solid #ffffff30;
+    background-color: #111a22;
+}
+
+/* 放大照片，使用整個左欄寬度 */
+#fight-panel .fight-preview img,
+#fight-panel .student-preview img {
+    display: block;
+    width: 100%;
+    max-width: none;
+
+    height: auto;
+    max-height: none;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+}
+
+/* 保留圖片載入失敗時的隱藏功能 */
+#fight-panel .fight-preview img[hidden] {
+    display: none;
+}
+
+#fight-panel .fight-preview figcaption,
+#fight-panel .student-preview figcaption {
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    min-height: 64px;
+    padding: 12px 16px;
+
+    color: #b5d7c6;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* 有沒有影片，都保留相同的按鈕位置 */
+#fight-panel .fight-video {
+    display: inline-block;
+    margin: 0 16px 16px;
+}
+
+#fight-panel .fight-video[hidden] {
+    display: inline-block;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* 學生區：接在個人區下方，用橫線分隔 */
+#fight-panel .student-results {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #ffffff30;
+}
+
+#fight-panel .student-results > h3 {
+    margin: 0 0 24px;
+}
+
+#fight-panel .student-results .fight-timeline {
+    margin-top: 0;
+}
+
+/* 學生紀錄沿用個人比賽的卡片風格 */
+#fight-panel .student-event {
+    padding: 12px;
+    border: 1px solid #ffffff30;
+}
+
+#fight-panel .student-event h4 {
+    margin: 8px 0;
+}
+
+#fight-panel .student-event p {
+    margin: 0;
+}
+
+/* 尚未補照片時，保留相同展示比例 */
+#fight-panel .student-photo-placeholder {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 2;
+    padding: 16px;
+    box-sizing: border-box;
+
+    background-color: #ffffff05;
+    color: #b5bdc4;
+}
+
+/* 電腦版：標題固定，只讓內容區捲動 */
+@media (min-width: 901px) {
+    #fight-panel[open] {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #fight-panel .panel-header {
+        position: relative;
+        flex: 0 0 auto;
+    }
+
+    #fight-panel > .panel-content {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+    }
+
+    /* 在各自區段內，讓照片停留於畫面 */
+    #fight-panel .fight-preview,
+    #fight-panel .student-preview {
+        position: sticky;
+        top: 16px;
+    }
+}
+
+/* 手機版：上下排列、正常捲動 */
+@media (max-width: 900px) {
+    #fight-panel .fight-layout {
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+    }
+
+    #fight-panel .fight-preview,
+    #fight-panel .student-preview {
+        position: static;
+    }
+}
+/* 學生場次按鈕 */
+.student-trigger {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+
+    background: transparent;
+    color: inherit;
+    border: 1px solid #ffffff30;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.student-trigger:hover {
+    background-color: #ffffff10;
+}
+
+.student-trigger:focus-visible {
+    outline: 2px solid #b5d7c6;
+    outline-offset: 4px;
+}
+
+.student-trigger[aria-pressed="true"] {
+    background-color: #b5d7c615;
+    border-color: #b5d7c6;
+}
+
+/* 載入中或失敗時，保留照片區的空間 */
+#student-photo-status {
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    aspect-ratio: 3 / 2;
+    margin: 0;
+    padding: 24px;
+    color: #b5bdc4;
+}
+
+/* 確保隱藏狀態不被其他顯示樣式覆蓋 */
+#student-photo-status[hidden],
+#fight-panel .student-preview img[hidden] {
+    display: none;
+}
+@media (max-width: 900px) {
+    /* 移除內容區上方空隙 */
+    #fight-panel > .panel-content {
+        padding-top: 0;
+    }
+
+    /* 照片預覽貼齊標題列下方 */
+    #fight-panel .fight-preview,
+    #fight-panel .student-preview {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+
+        margin: 0 0 24px;
+        padding: 0;
+        background-color: #111a22;
+    }
+
+    /* 取消原本的小尺寸限制，照片放大至整欄寬 */
+    #fight-panel .fight-preview img,
+    #fight-panel .student-preview img {
+        display: block;
+        width: 90%;
+        margin-inline: auto;
+        height: auto;
+        max-height: none;
+
+        aspect-ratio: 3 / 2;
+        object-fit: contain;
+        object-position: center top;
+    }
+
+    /* 載入提示使用相同的展示比例 */
+    #fight-panel #student-photo-status,
+    #fight-panel .student-photo-placeholder {
+        height: auto;
+        max-height: none;
+        aspect-ratio: 3 / 2;
+    }
+
+    /* 維持隱藏圖片的功能 */
+    #fight-panel .fight-preview img[hidden],
+    #fight-panel .student-preview img[hidden] {
+        display: none;
     }
 }

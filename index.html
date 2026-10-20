@@ -23,7 +23,7 @@
         <div class="content">
             <p class="greeting">你好，我是</p>
             <h1 class="name">MIKEY.</h1>
-            <p class="role">從健身教練，走向資訊安全。</p>  <!--class類別-->
+            <p class="role">從人身安全，走向資訊安全。</p>  <!--class類別-->
             
             <nav class="menu" aria-label="內容目錄">       <!--nav導覽區,button按鈕,span分組 -->
                 <button type="button" class="menu-item" id="about-button">
@@ -49,7 +49,7 @@
 
         </div>
     </main>
-    <!--頁尾-->
+    <!--頁尾mail-->
     <footer class="site-footer">
         <span class="footer-label">MIKEY .Mail</span>
         <a href="mailto:mikey.work9527@outlook.com">
@@ -57,6 +57,8 @@
         </a>
     </footer>
     <!--面板內容區-->
+
+        <!--關於我-->
     <dialog id="about-panel" class="panel" aria-labelledby="about-title">  <!--dialog是HTML的視窗元素-->
         <header class="panel-header">
             <h2 id="about-title">關於我</h2>
@@ -66,27 +68,130 @@
         </header>
 
         <div class="panel-content">
-            <p>我曾擔任五年健身教練，其中三年擔任訓練主任。</p>
-            <p>目前正在學習資訊安全，希望累積實作能力。</p>
+            <div class="panel-content">
+                <p class="about-intro">
+                    從格鬥的人身安全，走向網路的資訊安全。
+                </p>
+
+                <section class="about-section">
+                    <h3>我的工作經驗</h3>
+                    <h4>World Gym 健身教練 2022/07-2026/11</h4>    
+                        <p>
+                            過去在 World Gym 擔任五年健身教練，
+                            其中三年擔任訓練主任，
+                            負責新人與團隊的專業培訓。
+                        </p>
+                        <p>
+                            工作中累積了觀察問題、溝通需求、規劃課程、
+                            個人與團隊教學，以及業務銷售的經驗。
+                        </p>
+                </section>
+
+                <!--使用<section class="about-section">增加更多欄位-->
+                <section class="about-section">
+                    <h3>證照</h3>
+                    <!--證照新增區-->
+                    <ul class="certificate-list">
+                        <li class="certificate-item">
+                            <h4>MOS Office PowerPoint 2010</h4>
+                            <time datetime="2015-12">2015 年 12 月</time>
+                            <p class="certificate-issuer">Microsoft</p>
+                        </li>
+
+                        <li class="certificate-item">
+                            <h4>Adobe Dreamweaver CS6</h4>
+                            <time datetime="2016-05">2016 年 5 月</time>
+                            <p class="certificate-issuer">Silicon Stone Education, Inc.</p>
+                        </li>
+
+                        <li class="certificate-item">
+                            <h4>MySQL 5</h4>
+                            <time datetime="2016-12">2016 年 12 月</time>
+                            <p class="certificate-issuer">中華民國電腦技能基金會</p>
+                        </li>
+
+                        <li class="certificate-item">
+                            <h4>ERP 規劃應用師</h4>
+                            <time datetime="2017-06">2017 年 6 月</time>
+                            <p class="certificate-issuer">CERPS</p>
+                        </li>
+
+                        <li class="certificate-item">
+                            <h4>CRM 軟體應用（鼎新）</h4>
+                            <time datetime="2018-06">2018 年 6 月</time>
+                            <p class="certificate-issuer">中華民國電腦技能基金會</p>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section class="about-section">
+                    <h3>正在學習的內容 2026/10</h3>
+                    <ul>
+                        <li>準備 iPAS 初級資安工程師證照。</li>
+                        <li>透過 iThome 鐵人賽整理與分享資安學習筆記。</li>
+                        <li>使用 Git 記錄版本，透過 GitHub Pages 發布網站。</li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </dialog>
+        <!--作品集-->
     <dialog id="work-panel" class="panel" aria-labelledby="work-title">
         <header class="panel-header">
             <h2 id="work-title">作品集</h2>
             <button type="button" class="panel-close" id="close-work">關閉</button>
         </header>
-        <div class="panel-content">        
-            <article>
-                <h3>個人自我介紹網站</h3>
-                <p>從空白檔案開始，練習網頁結構、樣式與互動功能。</p>
-                <p>使用 Git 記錄版本，並透過 GitHub Pages 發布。</p>
+        <div class="panel-content">
+            <div class="portfolio-list">
 
-                <a href="https://github.com/Mikey-work-323/Mikey-work-323.github.io">
-                    查看GitHub原始碼
-                </a>
-            </article>
-        </div>    
+                <article class="portfolio-item">
+                    <header class="portfolio-heading">
+                        <h3>MIKEY 個人網站</h3>
+
+                        <time class="portfolio-date" datetime="2026-10">
+                            2026 / 10
+                        </time>
+                    </header>
+
+                    <p class="portfolio-summary">
+                        整合自我介紹、工作經歷、格鬥比賽與學習紀錄，
+                        製作能在電腦與手機瀏覽的個人網站。
+                    </p>
+
+                    <h4>實作內容</h4>
+                    <ul>
+                        <li>首頁排版與四個主題面板。</li>
+                        <li>比賽時間線、照片切換與影片連結。</li>
+                        <li>依畫面寬度調整版面。</li>
+                        <li>使用 Git（版本控制）記錄修改並發布網站。</li>
+                    </ul>
+
+                    <p class="portfolio-note">
+                        由 AI（人工智慧）協助教學與提供範例，
+                        我逐步輸入、修改、測試並發布。
+                    </p>
+
+                    <div class="portfolio-links">
+                        <a href="https://mikey-work-323.github.io/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                            查看作品 ↗
+                        </a>
+
+                        <a href="https://github.com/Mikey-work-323/Mikey-work-323.github.io"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                            查看原始碼 ↗
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 下一個作品：複製一整段 article 放在這裡 -->
+
+            </div>
+        </div>
     </dialog>
+        <!--格鬥與生活-->
     <dialog id="fight-panel" class="panel" aria-labelledby="fight-title">
         <header class="panel-header">
             <h2 id="fight-title">格鬥與生活</h2>
@@ -106,8 +211,11 @@
                     <figcaption id="fight-caption">
                         格鬥照片｜預設展示
                     </figcaption>
+                    <a id="fight-video" class="fight-video" target="_blank" rel="noopener noreferrer" hidden>
+                        觀看 YouTube 比賽影片 ↗
+                    </a>
                 </figure>
-                <section>
+                <section class="fight-records">
                     <h3>個人比賽紀錄</h3>
 
                     <ol class="fight-timeline">
@@ -115,9 +223,11 @@
                             <button type="button"
                                     class="fight-trigger"
                                     aria-pressed="false"
-                                    id="sanda-button">
+                                    id="sanda-button"
+                                    data-video="https://youtu.be/9Qj5JOV4OIE">
                                 <time datetime="2021-11">2021 年 11 月</time>
                                 <span class="fight-name">散打比賽</span>
+                                <span>結果：第五名</span>
                             </button>
                         </li>
 
@@ -125,9 +235,11 @@
                             <button type="button"
                                     class="fight-trigger"
                                     aria-pressed="false"
-                                    id="hualien-button">
+                                    id="hualien-button"
+                                    data-video="https://youtu.be/3quMwaxalPc">
                                 <time datetime="2022-06">2022 年 6 月</time>
                                 <span class="fight-name">洄瀾勇士</span>
+                                <span>結果：優勝</span>
                             </button>
                         </li>
 
@@ -135,9 +247,11 @@
                             <button type="button"
                                     class="fight-trigger"
                                     aria-pressed="false"
-                                    id="t1-2022-button">
+                                    id="t1-2022-button"
+                                    data-video="https://youtu.be/hS_cC6bJrR8">
                                 <time datetime="2022-09">2022 年 9 月</time>
                                 <span class="fight-name">T1 積分賽</span>
+                                <span>結果：優勝</span>
                             </button>
                         </li>
 
@@ -145,9 +259,11 @@
                             <button type="button"
                                     class="fight-trigger"
                                     aria-pressed="false"
-                                    id="wotd-button">
+                                    id="wotd-button"
+                                    data-video="https://youtu.be/Zio9CKxsOt8">
                                 <time datetime="2023-04">2023 年 4 月</time>
                                 <span class="fight-name">WOTD-ETD09</span>
+                                <span>結果：敗</span>
                             </button>
                         </li>
 
@@ -155,9 +271,11 @@
                             <button type="button"
                                     class="fight-trigger"
                                     aria-pressed="false"
-                                    id="t1-feb-button">
+                                    id="t1-feb-button"
+                                    data-video="https://youtu.be/_y54dHqHZt4">
                                 <time datetime="2024-02">2024 年 2 月</time>
                                 <span class="fight-name">T1 積分賽</span>
+                                <span>結果：優勝</span>
                             </button>
                         </li>
 
@@ -165,7 +283,8 @@
                             <button type="button"
                                     class="fight-trigger"
                                     aria-pressed="false"
-                                    id="t1-may-button">
+                                    id="t1-may-button"
+                                    data-video="https://youtu.be/mooF6IBMEO4">
                                 <time datetime="2024-05">2024 年 5 月</time>
                                 <span class="fight-name">T1 積分賽</span>
                                 <span>結果：敗</span>
@@ -174,17 +293,68 @@
                     </ol>
                 </section>
             </div>
+            <!--學生成果區-->
             <section class="student-results">
                 <h3>帶領學生參賽</h3>
-                <time datetime="2023-12">2023 年 12 月</time>
-                <h4>Punch up04－台南站</h4>
-                <p>帶領學生參賽並獲勝。</p>
+                <div class="fight-layout">
+                    <figure class="student-preview">
+                        <p id="student-photo-status" role="status">
+                            請選擇學生參賽場次
+                        </p>
+
+                        <img id="student-photo"
+                            alt="學生參賽照片"
+                            hidden>
+
+                        <figcaption id="student-caption">
+                            學生參賽紀錄
+                        </figcaption>
+
+                        <a id="student-video"
+                        class="fight-video"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        hidden>
+                            觀看 YouTube 學生比賽影片 ↗
+                        </a>
+                    </figure>
+
+                    <section class="fight-records"
+                            aria-label="學生參賽紀錄">
+                        <ol class="fight-timeline">
+
+                            <li>
+                                <button type="button"
+                                        class="student-trigger"
+                                        aria-pressed="false"
+                                        data-photo="assets/student-punchup04.jpg"
+                                        data-alt="帶領學生參加 Punch up04 台南站的比賽照片"
+                                        data-caption="2023 年 12 月｜Punch up04－台南站｜帶領學生獲勝"
+                                        data-video="">
+                                    <time datetime="2023-12">
+                                        2023 年 12 月
+                                    </time>
+
+                                    <span class="fight-name">
+                                        Punch up04－台南站
+                                    </span>
+
+                                    <span>結果：帶領學生獲勝</span>
+                                </button>
+                            </li>
+
+                            <!-- 新增場次時，把新的 li 放在這裡 -->
+
+                        </ol>
+                    </section>
+                </div>
             </section>
         </div>    
     </dialog>
+        <!--文章-->
     <dialog id="ironman-panel" class="panel" aria-labelledby="ironman-title">
         <header class="panel-header">
-            <h2 id="ironman-title">IT 鐵人賽</h2>
+            <h2 id="ironman-title">文章</h2>
             <button type="button" class="panel-close" id="close-ironman">關閉</button>
         </header>
         <div class="panel-content">
